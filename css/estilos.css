@@ -1,0 +1,38 @@
+
+.box-search{
+    display: flex;
+    justify-content: flex-end;
+    gap: .5%;
+    font-weight: bold;
+}
+
+.topo {
+    margin-top: 15px;
+}
+
+h3 {
+    display: flex;
+    justify-content: center;
+}
+
+tr:hover {
+    background-color: dimgray;
+    font-weight: bold;
+    cursor: pointer;   
+}
+
+
+tr {
+    width: 100%;   
+}
+
+th {
+    background-color: rgb(68, 68, 68);
+    color: aliceblue;  
+}
+
+td { 
+    text-align: right;   
+}
+
+
