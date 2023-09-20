@@ -15,21 +15,22 @@ $rowCount = $statement->rowCount();
 
 if ($rowCount > 0) {
 	$data = '<div class="table-responsive">
-		<table  class="table table-striped">
-		<thead>
-		<tr> 		
-			<th>Nome</th>
-			<th>CPF</th>					
+		<table class="table table-striped">
+		
+		<tr> 				
+			<th class="text-center">Nome</th>				
+			<th class="text-left">CPF</th>						
 		</tr>
-		</thead>
+		
 	';
 	foreach ($result as $row) {
 		$data .= '				
-			<tr class="row" data-id='  . $row['id'] .  ' > 
-				<td> </td>										
-				<td>' . $row["nome"] . '</td>	
-				<td>'       .          '</td>		
-				<td>' . $row["cpf"] . '</td>					
+			<tr class="row" data-id='  . $row['id'] .  ' > 	
+				
+				<td class="col-md-1">'  . '</td>						
+				<td class="col-md-6">' . $row["nome"] . '</td>		
+				<td class="col-md-1">'  . '</td>			
+				<td class="col-md-4">' . $row["cpf"] . '</td>					
 			</tr>		
 		';
 	}
