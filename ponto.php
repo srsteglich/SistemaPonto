@@ -31,19 +31,23 @@ date_default_timezone_set('America/Sao_Paulo');
             <?php
             print "Olá, " . $_SESSION["nome"];
             print "  - CPF: " . $_SESSION["cpf"];
+            //print " - " . $_SESSION["id"];
             print "<a href='logout.php' class='btn btn-danger'>Sair</a>";
             ?>
         </div>
     </nav>
 
     <?php
-    $id = $_GET['id'];
-    print $id;
+    $id = $_GET["id"];
+    $id_usuario = $id;
+    //print $id_usuario;
+    //print " <- mostra ID_USUARIO - ponto.php linha 44";
+
     if (isset($_SESSION['msg'])) {
         echo $_SESSION['msg'];
         unset($_SESSION['msg']);
     }
-    // $sql = "SELECT * FROM pontos WHERE data_entrada = CURDATE() AND usuario_id = " . $_REQUEST["id"];
+
     // $sql = "SELECT * FROM pontos WHERE data_entrada = CURDATE() AND usuario_id = 3";
     $sql = "SELECT * FROM pontos WHERE data_entrada = CURDATE() AND usuario_id = '$id'";
     $query = mysqli_query($conn, $sql);
@@ -63,6 +67,8 @@ date_default_timezone_set('America/Sao_Paulo');
                 <h3>Registrar Ponto</h3><br />
                 <h3 id="horario"><?php print date("d/m/Y H:i:s"); ?></h3>
                 <?php
+                //print $id_usuario;
+                //print  " ponto.php linha 71";
                 if (!empty($data_entrada)) {
                     print "<table class='table caption-top table-bordered'>";
                     print "<tr>";
@@ -97,11 +103,11 @@ date_default_timezone_set('America/Sao_Paulo');
                     }
                     }  */
 
-                //  Esse está OK - não mexer
+
                 if (empty($data_entrada) or ($saida == NULL)) {
                 ?>
-                    <div class="col-lg-12" style="text-align: right;">
-                        <a href=" registrar_ponto.php" class='btn btn-primary'>Registrar</a>
+                    <div class=" col-lg-12" style="text-align: right;">
+                        <a href='registrar_ponto.php?usuario_id=<?php print $id_usuario; ?>' class=' btn btn-primary'>Registrar</a>
                     </div>
                     <br />
                 <?php
@@ -112,7 +118,7 @@ date_default_timezone_set('America/Sao_Paulo');
             </div>
         </div>
     </div>
-    <!-- <a href="registrar_ponto.php">Registrar</a><br> -->
+    <!-- <a href=" registrar_ponto.php">Registrar</a><br> -->
 
     <script>
         function atualizarHorario() {

@@ -63,7 +63,7 @@ while ($result = mysqli_fetch_array($query)) {
                             <form action="login.php" method="POST">
                                 <div class="mb-3">
                                     <label>Nome: </label>
-                                    <input type="text" name="nome" value="<?php print $nome ?>" class=" form-control" />
+                                    <input type="text" name="nome" value="<?php print $nome; ?>" class=" form-control" />
                                 </div>
                                 <div class=" mb-3">
                                     <label>Senha</label>

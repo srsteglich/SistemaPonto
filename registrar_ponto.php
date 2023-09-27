@@ -19,8 +19,7 @@ $data_entrada = date('Y/m/d');
 include_once "conexao.php";
 
 // ID do usuario fixo para testar
-//$id_usuario = 3;
-$id_usuario = '$id';
+$id_usuario = $_GET["usuario_id"];
 
 // Recuperar o ultimo ponto do usuario
 $query_ponto = "SELECT id AS id_ponto, saida_intervalo, retorno_intervalo, saida 
@@ -127,8 +126,10 @@ $cad_horario->execute();
 // Acessa o IF quando cadastrar com sucesso
 if ($cad_horario->rowCount()) {
     $_SESSION['msg'] = "<p style='color: green;'>Horário de $text_tipo_registro cadastrado com sucesso!</p>";
-    header("Location: ponto.php");
+    $id = $id_usuario;
+    header("Location: ponto.php?id=$id");
 } else {
     $_SESSION['msg'] = "<p style='color: #f00;'>Horário de $text_tipo_registro não cadastrado com sucesso!</p>";
-    header("Location: ponto.php");
+    $id = $id_usuario;
+    header("Location: ponto.php?id=$id");
 }
