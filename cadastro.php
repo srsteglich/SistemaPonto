@@ -41,7 +41,10 @@ if (empty($_SESSION)) {
             </div>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <?php
-                print "Olá, " . $_SESSION["nome"]; ?>
+                print "Olá, " . $_SESSION["nome"];
+                print "  - CPF: " . $_SESSION["cpf"];
+                //  print "  - ID: " . $_SESSION["id"];
+                ?>
             </div>
             <?php print "<a href='logout.php' class='btn btn-danger'>Sair</a>"; ?>
         </div>
@@ -69,7 +72,7 @@ if (empty($_SESSION)) {
                         include("cadastro.php");
                         break;
                     default:
-                        print "<h1>Bem vindos!</h1";
+                        print "<h1>Bem vindos!</h1>";
                 }
                 ?>
             </div>

@@ -8,6 +8,7 @@ include('config.php');
 $nome = $_POST["nome"];
 $senha = $_POST["senha"];
 
+
 $sql = "SELECT * FROM usuarios 
         WHERE nome = '$nome' AND senha = '$senha'";
 
@@ -17,12 +18,14 @@ $qtd = $res->num_rows;
 
 if ($qtd > 0) {
     $_SESSION["nome"] = $nome;
-    $_SESSION["usuario"] = $row->$usuario;
+    $_SESSION["id"] = $row->$id;
     $_SESSION["tipo"] = $row->tipo;
+    $_SESSION["cpf"] = $row->cpf;
 
     // Tipo 1 -> é pra Usuario e Tipo-> 2 é pra Administrador
     if ($_SESSION["tipo"] == 1) {
-        print "<script>location.href='./ponto.php';</script>";
+        //pega a variavel e val lá no outro arquivo ..ar?id=" . $row->id . "';
+        print "<script>location.href='./ponto.php?id=" . $row->id . "';</script>";
     } else {
         print "<script>location.href='./cadastro.php';</script>";
     }
