@@ -56,7 +56,8 @@ if (($result_ponto) and ($result_ponto->rowCount() != 0)) {
 
         // Texto parcial que deve ser apresentado para o usuario
         $text_tipo_registro = "saída intervalo";
-    } elseif (($retorno_intervalo == "") or ($retorno_intervalo == null)) { // Verificar se o usuario bateu o ponto de retorno do intervalo
+        // Verificar se o usuario bateu o ponto de retorno do intervalo
+    } elseif (($retorno_intervalo == "") or ($retorno_intervalo == null)) {
         // Coluna que deve receber o valor
         $col_tipo_registro = "retorno_intervalo";
 

@@ -86,33 +86,39 @@ date_default_timezone_set('America/Sao_Paulo');
                     print "<td>" . $retorno_intervalo . "</td>";
                     print "<td>" . $saida . "</td>";
                 }
-                // verificar depois, no intervalo não pode menos que um hora
-                /*  if (empty($saida_intervalo) and ($retorno_intervalo == NULL)) {
-                    $tempo = gmdate('H:i:s', strtotime($retorno_intervalo) - strtotime($saida_intervalo));
 
-                    print " TESTE - Hora mais 60 minutos: ";
-                    print $tempo;
-                    print " - ";
-
-                    if ($tempo <= '01:00:00') {
-                    print " O Intervalo do retorno foi $tempo. Ideal esperar mais um pouco!!!";
-                    //sleep(3);
-                    header("Location: index.php");
-                    } else {
-                    print " A hora foi mais de uma hora:";
-                    }
-                    }  */
-
-
-                if (empty($data_entrada) or ($saida == NULL)) {
+                if (empty($data_entrada)) {
                 ?>
                     <div class=" col-lg-12" style="text-align: right;">
                         <a href='registrar_ponto.php?usuario_id=<?php print $id_usuario; ?>' class=' btn btn-primary'>Registrar</a>
                     </div>
                     <br />
-                <?php
+                    <?php
                 } else {
-                    print "Já foram regitrado o seu Ponto de Horário de Saída";
+                    if (!empty($saida)) {
+                        print "Já foram regitrado o seu Ponto de Horário de Saída";
+                    } elseif (!empty($saida_intervalo) and ($retorno_intervalo == NULL)) {
+                        $horagora = date("H:i:s");
+                        $tempo = gmdate('H:i:s', strtotime($horagora) - strtotime($saida_intervalo));
+                        //print " TESTE - Tempo: ";
+                        //print $tempo;
+                        $falta = gmdate('H:i:s', strtotime('01:00:00') - strtotime($tempo));
+                        if ($tempo < '01:00:00') {
+                            print "Faltam $falta para registrar o seu retorno do Intervalo";
+                        } else { ?>
+                            <div class=" col-lg-12" style="text-align: right;">
+                                <a href='registrar_ponto.php?usuario_id=<?php print $id_usuario; ?>' class=' btn btn-primary'>Registrar</a>
+                            </div>
+                            <br />
+                        <?php
+                        }
+                    } else { ?>
+                        <div class=" col-lg-12" style="text-align: right;">
+                            <a href='registrar_ponto.php?usuario_id=<?php print $id_usuario; ?>' class=' btn btn-primary'>Registrar</a>
+                        </div>
+                        <br />
+                <?php
+                    }
                 }
                 ?>
             </div>
