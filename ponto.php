@@ -8,6 +8,7 @@ if (empty($_SESSION)) {
 include('config.php');
 // Definir um fuso horario padrao
 date_default_timezone_set('America/Sao_Paulo');
+
 ?>
 
 <!DOCTYPE html>
