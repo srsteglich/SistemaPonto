@@ -18,12 +18,15 @@ if ($rowCount > 0) {
 		<table class="table table-striped">
 		<tr> 		
 			<th class="col-md-8"> Nome</th>				
-			<th class="col-6 col-md-3">CPF</th>						
+			<th class="col-md-4">CPF</th>						
 		</tr>
 		
 	';
 	foreach ($result as $row) {
-		$data .= '				
+		$data .= '		
+		
+		
+			
 			<tr class="row" data-id='  . $row['id'] .  ' > 					
 				<td class="col-md-1">'  . '</td>						
 				<td class="col-md-8">' . $row["nome"] . '</td>								
