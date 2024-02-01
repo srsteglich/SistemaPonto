@@ -1,7 +1,6 @@
 <?php
 switch ($_REQUEST["acao"]) {
     case 'cadastrar':
-
         $nome = $_POST["nome"];
         $cpf = $_POST["cpf"];
         $email = $_POST["email"];
@@ -29,20 +28,6 @@ switch ($_REQUEST["acao"]) {
                 print "<script>location.href='?page=listar';</script>";
             }
         }
-
-
-
-
-        /*      $sql = "INSERT INTO usuarios (nome, cpf, email, senha, usuario, tipo) 
-                VALUES ('{$nome}', '{$cpf}', '{$email}', '{$senha}', '{$usuario}', '{$tipo}')";
-        $res = $conn->query($sql);
-        if ($res == true) {
-            print "<script>alert('Cadastro com sucesso!!!');</script>";
-            print "<script>location.href='?page=listar';</script>";
-        } else {
-            print "<script>alert('Não foi possivel cadastrar!!!');</script>";
-            print "<script>location.href='?page=listar';</script>";
-        }  */
         break;
     case 'editar':
         $nome = $_POST["nome"];
@@ -54,7 +39,6 @@ switch ($_REQUEST["acao"]) {
 
         $sql = "UPDATE usuarios SET nome='{$nome}', cpf='{$cpf}', email='{$email}', senha='{$senha}', usuario='{$usuario}', tipo='{$tipo}'
                 WHERE id=" . $_REQUEST["id"];
-
         $res = $conn->query($sql);
         if ($res == true) {
             print "<script>alert('Alterado com sucesso!!!');</script>";
@@ -65,9 +49,7 @@ switch ($_REQUEST["acao"]) {
         }
         break;
     case 'excluir':
-
         $sql = "DELETE FROM usuarios WHERE id=" . $_REQUEST["id"];
-
         $res = $conn->query($sql);
         if ($res == true) {
             print "<script>alert('Excluido com sucesso!!!');</script>";
@@ -76,5 +58,37 @@ switch ($_REQUEST["acao"]) {
             print "<script>alert('Não foi possivel excluir!!!');</script>";
             print "<script>location.href='?page=listar';</script>";
         }
+        break;
+    case 'editarHorario':     
+        $data_entrada = $_POST["data_entrada"];
+        $entrada = $_POST["entrada"];
+        $saida_intervalo = $_POST["saida_intervalo"];
+        $retorno_intervalo = $_POST["retorno_intervalo"];
+        $saida = $_POST["saida"];
+
+        $sql = "UPDATE pontos SET data_entrada='{$data_entrada}', entrada='{$entrada}', saida_intervalo='{$saida_intervalo}', retorno_intervalo='{$retorno_intervalo}', saida='{$saida}'
+                WHERE id=" . $_REQUEST["id"];    
+        $res = $conn->query($sql);  
+        if ($res == true) {
+            print "<script>alert('Alterado com sucesso!!!');</script>";
+            print "<script>location.href='?page=listar';</script>";          
+
+        } else {
+            print "<script>alert('Não foi possivel alterar!!!');</script>";
+            print "<script>location.href='?page=listar';</script>";            
+            
+        } 
+        break;
+    case 'excluirHorario':
+        $sql = "DELETE FROM pontos WHERE id=" . $_REQUEST["id"];
+        $res = $conn->query($sql);
+
+        if ($res == true) {
+            print "<script>alert('Excluido com sucesso!!!');</script>";
+            print "<script>location.href='?page=listar';</script>";
+        } else {
+            print "<script>alert('Não foi possivel excluir!!!');</script>";
+            print "<script>location.href='?page=listar';</script>";
+        }        
         break;
 }

@@ -67,10 +67,13 @@ if (empty($_SESSION)) {
                         break;
                     case "editar":
                         include("editar-usuario.php");
-                        break;
+                        break;                        
                     case "consultar":
                         include("consultar-horario.php");
                         break;
+                    case "editar-horario":
+                            include("editar-horario.php");
+                            break;      
                     case "voltar":
                         include("cadastro.php");
                         break;
