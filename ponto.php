@@ -23,6 +23,7 @@ date_default_timezone_set('America/Sao_Paulo');
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>    
+    <script src="./js/scripts.js" defer></script>
 </head>
 
 <body>
@@ -104,9 +105,15 @@ date_default_timezone_set('America/Sao_Paulo');
                         //print " TESTE - Tempo: ";
                         //print $tempo;
                         $falta = gmdate('H:i:s', strtotime('01:00:00') - strtotime($tempo));
-                      
+                       // print $falta;
+                        $partes = explode(':', $falta);
+                        $segundos = $partes[0] * 3600 + $partes[1] * 60 + $partes[2];                       
+                        //print $segundos;
+                        $script = "<script> let time = $segundos-1; </script>";
+                        print $script;
                         if ($tempo < '01:00:00') {
-                            print "Faltam $falta para registrar o seu retorno do Intervalo";                                                                                    
+                            //$falta
+                            print "Para registrar o seu retorno do Intervalo ainda faltam" ?> <class id="timer"></class> <?php                                   
                         } else { ?>
                             <div class=" col-lg-12" style="text-align: right;">
                                 <a href='registrar_ponto.php?usuario_id=<?php print $id_usuario; ?>' class=' btn btn-primary'>Registrar</a>
